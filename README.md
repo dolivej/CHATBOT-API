@@ -1,7 +1,6 @@
 # chatbot
 
-Chatbot app made using express and the IBM Cloud Watson Service.
-This backend is hosted on IBM Cloud Foundry.
+Chatbot app made using express and the IBM Cloud Watson Service, hosted on IBM Cloud Foundry.
 
 See the chatbot live here: https://dolivej.github.io/Chatbot-Frontend/
 
