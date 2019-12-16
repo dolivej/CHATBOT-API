@@ -4,9 +4,36 @@ const express = require("express");
 const bodyParser = require("body-parser"); // parser for post requests
 const AssistantV2 = require("ibm-watson/assistant/v2"); // watson sdk
 const { IamAuthenticator } = require("ibm-watson/auth");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+var cfenv = require("cfenv");
+var appEnv = cfenv.getAppEnv();
+
+if (appEnv.isLocal) {
+  var host = "localhost";
+  var port = 3000;
+} else {
+  var host = appEnv.host;
+  var port = appEnv.port;
+}
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
+
+const db = require(process.env.dbConnectionString);
+mongoose
+  .connect(db)
+  .then(() => {
+    console.log("DB Connected");
+  })
+  .catch(e => {
+    console.log(e);
+  });
+
+const messages = require("./dbRoutes/messages");
+app.use("/db/messages", messages);
 
 var assistant = new AssistantV2({
   version: "2019-02-28",
@@ -62,4 +89,5 @@ app.get("/api/session", function(req, res) {
   );
 });
 
-app.listen(3000, () => console.log("Listening on port 3000"));
+app.listen(port, host, () => console.log("Listening on port 3000"));
+
