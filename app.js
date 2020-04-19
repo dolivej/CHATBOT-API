@@ -3,7 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser"); // parser for post requests
 const AssistantV2 = require("ibm-watson/assistant/v2"); // watson sdk
 const { IamAuthenticator } = require("ibm-watson/auth");
-const mongoose = require("mongoose");
 const cors = require("cors");
 
 var cfenv = require("cfenv");
@@ -20,19 +19,6 @@ if (appEnv.isLocal) {
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-
-const db = require(process.env.dbConnectionString);
-mongoose
-  .connect(db)
-  .then(() => {
-    console.log("DB Connected");
-  })
-  .catch(e => {
-    console.log(e);
-  });
-
-const messages = require("./dbRoutes/messages");
-app.use("/db/messages", messages);
 
 var assistant = new AssistantV2({
   version: "2019-02-28",
