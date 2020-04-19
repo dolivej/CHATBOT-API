@@ -21,7 +21,7 @@ To use the chatbot simply embed it on your IST Homepage or some customer facing 
 
 Then users can click the bottom left button to start interacting with the chatbot.
 
-This chatbot has interactions focused around "open times", "internet issues" and "contact details"
+This chatbot has interactions about open hours, locations, making an appointment and being transferred to a real person.
 
 There is also a section in the chatbot that displays the answers to some common issues. This would be updated by the IST Team.
 
