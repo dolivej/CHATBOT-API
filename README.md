@@ -3,7 +3,9 @@
   - [Packages](#packages)
   - [Endpoints](#endpoints)
     - [Personal Site](#tenant-portal)
-
+  - [Examples](#examples)
+  
+  
 # About
 
 This repository contains the code for an Express API used to connect to the IBM Watson Assistant service for chatbots.
@@ -22,6 +24,10 @@ The endpoints are located inside app.js.
 
 ## Endpoints
 
+
+---
+
+## Examples
 
 
 
